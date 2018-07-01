@@ -2,7 +2,7 @@ const Helper = function (url) {
   this.url = url
 }
 
-RequestHelper.prototype.get = function (onComplete) {
+Helper.prototype.get = function (onComplete) {
   const xhr = new XMLHttpRequest();
   xhr.open('GET', this.url);
   xhr.addEventListener('load', function() {
