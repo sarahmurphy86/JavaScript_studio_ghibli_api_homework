@@ -12,6 +12,7 @@ FilmDetailView.prototype.bindEvents = function () {
     this.populateTheContainer(filmDetails);
   });
 };
+// Ask about the above
 
 FilmDetailView.prototype.populateTheContainer = function (film) {
   const filmInfo = document.createElement('div');
