@@ -21,11 +21,6 @@ Films.prototype.getData = function () {
   helper.get((allFilmData) => {
   // console.log(allFilmData);
   this.filmsData = allFilmData;
-  // const filmNames = this.films.map((film) => {
-  //     return film.title;
-  //   });
-  // console.log(filmNames);
-  // console.log(allFilmData);
   PubSub.publish('Films:film-name', allFilmData);
   });
 
