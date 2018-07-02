@@ -8,9 +8,11 @@ const Films = function (){
 Films.prototype.bindEvents = function () {
 
   PubSub.subscribe('FilmListView:get-film-details', (event) =>{
-    const filmName = event.detail;
-    console.log(filmName);
-    PubSub.publish('Films:film-information', filmName);
+    const filmIndex = event.detail;
+    console.log(filmIndex);
+    const selectedFilm = this.filmsData[filmIndex]
+    // console.log(selectedFilm);
+    PubSub.publish('Films:film-information', selectedFilm);
   });
 };
 
@@ -18,7 +20,7 @@ Films.prototype.getData = function () {
   const helper = new Helper('https://ghibliapi.herokuapp.com/films')
   helper.get((allFilmData) => {
   // console.log(allFilmData);
-  this.films = allFilmData;
+  this.filmsData = allFilmData;
   // const filmNames = this.films.map((film) => {
   //     return film.title;
   //   });

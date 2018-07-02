@@ -7,12 +7,12 @@ const FilmDetailView = function (containerForFilmDetails){
 
 FilmDetailView.prototype.bindEvents = function () {
   PubSub.subscribe('Films:film-information', (event) => {
-    const filmDetails = event.detail;
-    console.log(filmDetails);
-    this.populateTheContainer(filmDetails);
+    const filmSelected = event.detail;
+    // console.log(filmSelected);
+    this.populateTheContainer(filmSelected);
   });
 };
-// Ask about the above
+
 
 FilmDetailView.prototype.populateTheContainer = function (film) {
   const filmInfo = document.createElement('div');
@@ -20,12 +20,14 @@ FilmDetailView.prototype.populateTheContainer = function (film) {
   const filmName = film.title;
   const htmlElementForFilmName = document.createElement('h2');
   htmlElementForFilmName.textContent = filmName;
-  filmInfo.appendChild(filmName);
+  filmInfo.appendChild(htmlElementForFilmName);
 
   const filmDescription = film.description;
   const htmlElementForDescription = document.createElement('p');
   htmlElementForDescription.textContent = filmDescription;
-  filmInfo.appendChild(filmDescription);
+  filmInfo.appendChild(htmlElementForDescription);
+
+  this.container.appendChild(filmInfo)
 };
 
 module.exports = FilmDetailView;
